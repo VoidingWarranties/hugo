@@ -126,8 +126,8 @@ func (f *Filesystem) shouldRead(filePath string, fi os.FileInfo) (bool, error) {
 		}
 		if !linkfi.Mode().IsRegular() {
 			jww.ERROR.Printf("Symbolic links for directories not supported, skipping '%s'", filePath)
+			return false, nil
 		}
-		return false, nil
 	}
 
 	if fi.IsDir() {
